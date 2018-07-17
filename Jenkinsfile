@@ -4,7 +4,7 @@ node ('master'){
   }
   stage ('compile-package'){
     //getting mvn path
-   def mvnhome=tool name: 'maven-3', type: 'maven'
+   def mvnhome=tool name: 'm2_home', type: 'maven'
     sh "${mvnhome}/bin/mvn package"
   }
 }
