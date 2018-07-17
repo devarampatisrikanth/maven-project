@@ -3,6 +3,8 @@ node ('master'){
   git 'https://github.com/devarampatisrikanth/maven-project'
   }
   stage ('compile-package'){
-  sh 'mvn package'
+    //getting mvn path
+   def mvnhome=tool name: 'maven-3', type: 'maven'
+    sh "${mvnhome}/bin/mvn clean package"
   }
 }
