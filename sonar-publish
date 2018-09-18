@@ -7,9 +7,9 @@ node {
     sh "${mvnhome}/bin/mvn package"
   }
   stage ('sonar-code-publish'){
-     def mvnhome = tool name: 'M2_HOME', type: 'maven'
+     def env = tool name: 'SONAR_RUNNER', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
     withSonarQubeEnv['sonar-Qube']{
-       sh "${mvnhome}/bin/mvn admin:admin"
+       sh "${env}/bin/mvn admin:admin"
     }
     
   }
