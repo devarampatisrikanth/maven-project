@@ -1,0 +1,18 @@
+node {
+  stage ('scm checkout'){
+    git 'https://github.com/devarampatisrikanth/maven-project'
+  }
+  satge ('comiple-package'){
+    def mvnhome = tool name: 'M2_HOME', type: 'maven'
+    sh "${mvnhome}/bin/mvn package"
+  }
+  stage ('sonar-code-publish'){
+     def mvnhome = tool name: 'M2_HOME', type: 'maven'
+    withSonarQubeEnv['sonar']{
+       sh "${mvnhome}/bin/mvn sonar:sonar"
+    }
+    
+  }
+
+
+}
