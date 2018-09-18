@@ -8,8 +8,8 @@ node {
   }
   stage ('sonar-code-publish'){
      def mvnhome = tool name: 'M2_HOME', type: 'maven'
-    withSonarQubeEnv['sonar']{
-       sh "${mvnhome}/bin/mvn sonar:sonar"
+    withSonarQubeEnv['sonar-Qube']{
+       sh "${mvnhome}/bin/mvn admin:admin"
     }
     
   }
